@@ -44,8 +44,8 @@ public class TopicoSevice {
     }
 
     public DadosDetalhamentoTopico atualizar(DadosAtualizarTopico dados, Long id) {
-        verificarTopicoExistente(dados.titulo(), dados.mensagem());
         var topico = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Topico com não encontrado"));
+        verificarTopicoExistente(dados.titulo(), dados.mensagem());
         topico.atualizarTopico(dados);
 
         return new DadosDetalhamentoTopico(topico);
