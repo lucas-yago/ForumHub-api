@@ -29,7 +29,7 @@ public class TopicoSevice {
         var usuario = buscarUsuario(dados.idAutor());
         var curso = buscarCurso(dados.idCurso());
 
-        var topico = new Topico(dados.titulo(), dados.mensagem(), usuario, curso );
+        var topico = new Topico(dados.titulo(), dados.mensagem(), usuario, curso);
         repository.save(topico);
         return new DadosDetalhamentoTopico(topico);
     }
@@ -39,7 +39,14 @@ public class TopicoSevice {
     }
 
     public DadosDetalhamentoTopico detalhar(Long id) {
-        var topico = repository.getReferenceById(id);
+        var topico = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Topico com não encontrado"));
+        return new DadosDetalhamentoTopico(topico);
+    }
+
+    public DadosDetalhamentoTopico atualizar(DadosAtualizarTopico dados, Long id) {
+        var topico = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Topico com não encontrado"));
+        topico.atualizarTopico(dados);
+
         return new DadosDetalhamentoTopico(topico);
     }
 

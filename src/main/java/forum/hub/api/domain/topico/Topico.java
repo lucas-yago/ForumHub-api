@@ -51,5 +51,12 @@ public class Topico {
         this.ativo = true;
     }
 
-
+    public void atualizarTopico(DadosAtualizarTopico dados) {
+        if(dados.titulo() != null && !dados.titulo().isBlank()){
+            this.titulo = dados.titulo();
+        }
+        if(dados.mensagem() != null && !dados.mensagem().isBlank()){
+            this.mensagem = dados.mensagem();
+        }
+    }
 }

@@ -1,10 +1,7 @@
 package forum.hub.api.controller;
 
 
-import forum.hub.api.domain.topico.DadosCadastroTopico;
-import forum.hub.api.domain.topico.DadosDetalhamentoTopico;
-import forum.hub.api.domain.topico.DadosListagemTopicos;
-import forum.hub.api.domain.topico.TopicoSevice;
+import forum.hub.api.domain.topico.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -43,5 +40,12 @@ public class TopicoController {
     public ResponseEntity<DadosDetalhamentoTopico> detalhar(@PathVariable Long id){
         var topico = service.detalhar(id);
         return ResponseEntity.ok(topico);
+    }
+
+    @PutMapping("/{id}")
+    @Transactional
+    public ResponseEntity<DadosDetalhamentoTopico> atualizar(@RequestBody DadosAtualizarTopico dados , @PathVariable Long id){
+        var topicoAtualizado =  service.atualizar(dados, id);
+        return ResponseEntity.ok(topicoAtualizado);
     }
 }
