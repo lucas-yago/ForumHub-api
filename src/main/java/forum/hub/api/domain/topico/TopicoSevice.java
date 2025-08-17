@@ -7,6 +7,8 @@ import forum.hub.api.domain.usuario.UsuarioRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -32,6 +34,9 @@ public class TopicoSevice {
         return new DadosDetalhamentoTopico(topico);
     }
 
+    public Page<DadosListagemTopicos> listar(Pageable paginacao) {
+        return repository.findAllByAtivoTrue(paginacao).map(DadosListagemTopicos::new);
+    }
 
 
     private void verificarTopicoExistente(String titulo, String mensagem) {
@@ -49,7 +54,5 @@ public class TopicoSevice {
         return cursoRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Curso não encontrado."));
     }
-
-
 
 }
