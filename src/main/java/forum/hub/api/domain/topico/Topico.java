@@ -38,7 +38,16 @@ public class Topico {
     private Curso curso;
 
     @OneToMany(mappedBy = "topico", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Resposta> respostas = new ArrayList<>();;
+    private List<Resposta> respostas = new ArrayList<>();
+
+    public Topico(String titulo, String mensagem, Usuario autor, Curso curso) {
+        this.titulo = titulo;
+        this.mensagem = mensagem;
+        this.autor = autor;
+        this.curso = curso;
+        this.dataCriacao = LocalDateTime.now();
+        this.status = true;
+    }
 
 
 }

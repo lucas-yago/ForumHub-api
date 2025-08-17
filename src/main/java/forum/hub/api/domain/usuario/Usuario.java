@@ -25,5 +25,10 @@ public class Usuario {
     private String email;
     private String senha;
     @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "usuario_perfis",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "perfil_id")
+    )
     private Set<Perfil> perfis = new HashSet<>();
 }
