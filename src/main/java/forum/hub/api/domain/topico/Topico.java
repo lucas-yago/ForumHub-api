@@ -59,4 +59,7 @@ public class Topico {
             this.mensagem = dados.mensagem();
         }
     }
+
+    public void inativar() { this.ativo =  false; }
+
 }

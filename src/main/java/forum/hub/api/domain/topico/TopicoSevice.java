@@ -44,10 +44,16 @@ public class TopicoSevice {
     }
 
     public DadosDetalhamentoTopico atualizar(DadosAtualizarTopico dados, Long id) {
+        verificarTopicoExistente(dados.titulo(), dados.mensagem());
         var topico = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Topico com não encontrado"));
         topico.atualizarTopico(dados);
 
         return new DadosDetalhamentoTopico(topico);
+    }
+
+    public void excluir(Long id) {
+        var topico =  repository.findById(id).orElseThrow(() -> new EntityNotFoundException("Topico com não encontrado"));
+        topico.inativar();
     }
 
     private void verificarTopicoExistente(String titulo, String mensagem) {
