@@ -7,7 +7,11 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
 
+@Table(name = "usuarios")
+@Entity(name = "Usuario")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,5 +24,6 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
-    private Perfil perfis;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Perfil> perfis = new HashSet<>();
 }

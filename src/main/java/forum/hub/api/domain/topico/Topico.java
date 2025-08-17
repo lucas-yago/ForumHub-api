@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Table(name = "topicos")
@@ -27,9 +28,17 @@ public class Topico {
     private String mensagem;
     private LocalDateTime dataCriacao;
     private Boolean status;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "autor_id")
     private Usuario autor;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "curso_id")
     private Curso curso;
-    private List<Resposta> respostas;
+
+    @OneToMany(mappedBy = "topico", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Resposta> respostas = new ArrayList<>();;
 
 
 }
