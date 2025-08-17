@@ -38,4 +38,10 @@ public class TopicoController {
 
         return ResponseEntity.ok(topicos);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DadosDetalhamentoTopico> detalhar(@PathVariable Long id){
+        var topico = service.detalhar(id);
+        return ResponseEntity.ok(topico);
+    }
 }

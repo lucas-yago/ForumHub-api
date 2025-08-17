@@ -38,6 +38,10 @@ public class TopicoSevice {
         return repository.findAllByAtivoTrue(paginacao).map(DadosListagemTopicos::new);
     }
 
+    public DadosDetalhamentoTopico detalhar(Long id) {
+        var topico = repository.getReferenceById(id);
+        return new DadosDetalhamentoTopico(topico);
+    }
 
     private void verificarTopicoExistente(String titulo, String mensagem) {
         if (repository.existsByTituloAndMensagem(titulo, mensagem)) {
