@@ -2,7 +2,7 @@
 
 # Fórum Hub - Alura Challenge
 
-![Status](https://img.shields.io/badge/status-concluído-brightgreen) ![Java](https://img.shields.io/badge/java-21-yellow) ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.5.4-green) ![Licença](https://img.shields.io/badge/licença-MIT-blue)  
+![Status](https://img.shields.io/badge/status-concluído-brightgreen) ![Java](https://img.shields.io/badge/java-17-yellow) ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.5.4-green) ![Licença](https://img.shields.io/badge/licença-MIT-blue)  
 
 ## 📖 Sobre o Projeto
 
@@ -74,3 +74,4 @@ O projeto contempla práticas essenciais de desenvolvimento com **Java** e **Spr
 ## 📜 Licença
 
 Projeto licenciado sob a **MIT License**. Consulte o arquivo [LICENSE](LICENSE) para mais informações.
+
